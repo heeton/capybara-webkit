@@ -112,7 +112,7 @@ void Connection::pendingLoadFinished(bool success) {
 }
 
 void Connection::finishCommand(bool success, QString &response) {
-  m_command->deleteLater();
+  if (m_command != NULL){ m_command->deleteLater(); }
   m_command = NULL;
   m_arguments.clear();
   writeResponse(success, response);
